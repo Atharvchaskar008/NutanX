@@ -1,0 +1,122 @@
+:root {
+    /* New Color Additions */
+    --cyber-navy: #84939E;
+    --neon-slate: #CBD0F6;
+    --soft-graphite: #082D4B;
+     --paper-white: #ffffff;
+}
+body {
+    background-color: var(--cyber-navy);
+    color: var(--paper-white);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(28, 37, 65, 0.95);
+    border-bottom: 2px solid var(--neon-slate);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-text { font-weight: 900; letter-spacing: 2px; color: var(--neon-slate); }
+
+.nav-btn {
+    background: transparent;
+    border: 1px solid var(--soft-graphite);
+    color: var(--paper-white);
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 10px;
+}
+
+.nav-btn.active, .nav-btn:hover {
+    background: var(--neon-slate);
+    color: var(--cyber-navy);
+    border-color: var(--neon-slate);
+    font-weight: bold;
+}
+
+.dashboard-header {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+}
+
+.dashboard-header h1 { color: var(--data-gold); font-size: 2.5rem; margin-bottom: 0; }
+
+.vault-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 2rem 5%;
+}
+
+.course-card {
+    background: #232e4d;
+    border: 1px solid rgba(91, 192, 190, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    border-color: var(--neon-slate);
+    box-shadow: 0 0 20px rgba(91, 192, 190, 0.1);
+    transform: translateY(-5px);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.code-badge {
+    color: var(--data-gold);
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.unit-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    flex-grow: 1;
+}
+
+.unit-list li {
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(169, 169, 169, 0.1);
+    font-size: 0.9rem;
+}
+
+.unit-list li::before {
+    content: "▹";
+    color: var(--neon-slate);
+    margin-right: 8px;
+}
+
+.action-btn {
+    background: var(--neon-slate);
+    color: var(--cyber-navy);
+    text-align: center;
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+    .navbar { flex-direction: column; gap: 1rem; }
+}

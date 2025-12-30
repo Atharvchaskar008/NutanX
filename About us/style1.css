@@ -1,0 +1,122 @@
+:root {
+    --misty-white: #F5F5F7;
+    --jet-black: #121212;
+    --accent-blue: #9ac9f7;
+    --card-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+    --glass-border: rgba(0, 0, 0, 0.08);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--misty-white);
+    color: var(--jet-black);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.accent-blue-text {
+    color: var(--accent-blue);
+}
+
+/* --- Responsive Mission Section --- */
+.mission-section {
+    padding: 60px 0; /* Mobile Padding */
+}
+
+.badge-custom {
+    background: var(--jet-black);
+    color: var(--misty-white);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    display: inline-block;
+}
+
+.display-5 {
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    font-size: 2.2rem; /* Mobile Font Size */
+    line-height: 1.2;
+}
+
+.description-text {
+    font-size: 1rem;
+    color: #4b5563;
+    max-width: 500px; /* Prevents text from stretching too wide on tablet */
+}
+
+/* --- The Info Box --- */
+.mission-info-box {
+    background: #ffffff;
+    padding: 1.5rem; /* Mobile Padding */
+    border-radius: 28px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--glass-border);
+}
+
+.mission-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mission-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid #f3f4f6;
+    display: flex;
+    align-items: flex-start;
+    font-size: 0.9rem;
+}
+
+.mission-list li:last-child {
+    border-bottom: none;
+}
+
+.mission-list li::before {
+    content: "→";
+    margin-right: 12px;
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+/* --- BREAKPOINTS --- */
+
+/* For Desktop (Large Screens) */
+@media (min-width: 992px) {
+    .mission-section {
+        padding: 120px 0;
+    }
+    .display-5 {
+        font-size: 3.5rem;
+    }
+    .description-text {
+        font-size: 1.15rem;
+    }
+    .mission-info-box {
+        padding: 3.5rem;
+    }
+}
+
+/* For Tablets and Small Desktop */
+@media (max-width: 991px) {
+    .display-5 {
+        font-size: 2.8rem;
+    }
+}
+
+/* For Mobile (Optimizing for vertical stack) */
+@media (max-width: 576px) {
+    .display-5 {
+        font-size: 2rem;
+    }
+    .mission-section {
+        padding: 40px 15px;
+    }
+    .mission-info-box {
+        padding: 1.2rem;
+        border-radius: 20px;
+    }
+}

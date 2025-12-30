@@ -1,0 +1,121 @@
+:root {
+    --ocean: #003b55;
+    --driftwood: #BFB5AF;
+    --seafoam: #73bee6;
+    --coral: #E6A57E;
+    --cloud: #F7F4F3;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--cloud);
+    color: var(--ocean);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* 🏔️ Header */
+.main-header {
+    background: var(--white);
+    padding: 4rem 1rem 6rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(191, 181, 175, 0.3);
+}
+
+.hero-title { font-size: 2.5rem; font-weight: 800; margin: 0; }
+.hero-subtitle { color: var(--driftwood); font-weight: 600; margin-top: 0.5rem; }
+
+/* 🔍 Search Bar */
+.search-section { display: flex; justify-content: center; margin-top: -2rem; }
+.search-box { position: relative; width: 90%; max-width: 600px; }
+.search-icon { position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); }
+
+#searchInput {
+    width: 100%;
+    padding: 1.2rem 1rem 1.2rem 3.5rem;
+    border: 2px solid var(--white);
+    border-radius: 16px;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 30px rgba(0, 59, 85, 0.1);
+    box-sizing: border-box;
+}
+
+/* 🃏 Grid & Cards */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.alumni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 24px;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(191, 181, 175, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 59, 85, 0.1);
+    border-color: var(--coral);
+}
+
+/* 📛 Profile & Badge */
+.initials-badge {
+    background: var(--ocean);
+    color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.batch-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--driftwood);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.designation {
+    background: rgba(115, 190, 230, 0.1);
+    border-left: 4px solid var(--seafoam);
+    padding: 0.8rem 1rem;
+    border-radius: 0 12px 12px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 1.2rem 0;
+    flex-grow: 1;
+}
+
+.portal-btn {
+    background: var(--ocean);
+    color: var(--white);
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.portal-btn:hover { background: var(--coral); }
+
+.hidden { display: none; }
+.error-state { text-align: center; padding: 3rem; font-weight: 600; }
+
+.site-footer { background: var(--white); padding: 3rem 1rem; text-align: center; border-top: 1px solid var(--driftwood); }
+.footer-links { display: flex; gap: 2rem; justify-content: center; margin-top: 1rem; }
+.footer-links a { color: var(--ocean); text-decoration: none; font-size: 0.9rem; }

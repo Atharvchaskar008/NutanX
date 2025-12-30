@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber-Navy FE Vault 2025</title>
+    <link rel="stylesheet" href="academics.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="brand">
+                <span class="logo-icon">◈</span>
+                <span class="logo-text">FE VAULT <small>25-26</small></span>
+            </div>
+            <div class="filter-controls">
+                <button class="nav-btn active" onclick="filterVault('all', this)">All</button>
+                <button class="nav-btn" onclick="filterVault('sem1', this)">Sem I</button>
+                <button class="nav-btn" onclick="filterVault('sem2', this)">Sem II</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="dashboard-header">
+            <h1>Academic Command Center</h1>
+            <p>Mapped to NMVPM's (NMIET) Autonomous 2025 Pattern Curriculum</p>
+        </div>
+
+        <div id="vault-grid" class="vault-grid">
+            </div>
+    </main>
+
+    <script src="academics.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NMIET Emergency Portal | Talegaon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #B71C1C;   /* Crimson Red */
+            --secondary: #ECEFF1; /* Cool Gray */
+            --accent: #1976D2;    /* Hospital Blue */
+            --success: #16a34a;   /* Dial Green */
+            --white: #FFFFFF;
+            --text: #263238;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--white);
+            color: var(--text);
+            margin: 0;
+            padding-bottom: 40px;
+        }
+
+        /* 🏔️ Header Styling */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 🚀 Rapid Action Buttons (Top) */
+        .rapid-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Side-by-side */
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: 900;
+            font-family: 'Outfit', sans-serif;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .ambulance { background-color: var(--primary); }
+        .police { background-color: var(--accent); }
+
+        /* 🃏 Card Grid System */
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
+            margin: 40px 0 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--secondary);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .card:hover { transform: translateY(-3px); }
+
+        .info h3 { margin: 0; font-size: 1.1rem; }
+        .info p { margin: 5px 0 0; color: #546e7a; font-size: 0.9rem; }
+        .tag { font-size: 0.75rem; font-weight: bold; color: var(--accent); }
+
+        .dial-btn {
+            background-color: var(--success);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 🖼️ Bottom Reference Image */
+        .visual-reference {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .visual-reference img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            border: 5px solid var(--secondary);
+        }
+
+        /* 📱 Mobile Adjustments */
+        @media (max-width: 600px) {
+            .rapid-grid { grid-template-columns: 1fr; } /* Stack on tiny screens */
+            header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>NMIET Emergency</h1>
+        <p>Talegaon Dabhade Campus Support</p>
+    </header>
+
+    <div class="container">
+        <div class="rapid-grid">
+            <a href="javascript:void(0)" onclick="confirmDial('Ambulance', '108')" class="action-btn ambulance">
+                <span>🚑 AMBULANCE</span>
+                <small>108</small>
+            </a>
+            <a href="javascript:void(0)" onclick="confirmDial('Police', '112')" class="action-btn police">
+                <span>👮 POLICE</span>
+                <small>112</small>
+            </a>
+        </div>
+
+        <h2 class="section-title">Hospitals in Talegaon</h2>
+        <div class="card-grid" id="hospital-list">
+            </div>
+
+        <h2 class="section-title">Emergency Helplines</h2>
+        <div class="card-grid" id="helpline-list">
+            </div>
+
+        <div class="visual-reference">
+            <h2 class="section-title">Campus Contact Board</h2>
+            <img src="emergency.jpeg" alt="NMIET Emergency Board Reference">
+        </div>
+    </div>
+
+    <script>
+        const hospitals = [
+            { name: "Harneshwar Multispeciality", num: "08042782180", desc: "Katvi, Talegaon-Chakan Rd" },
+            { name: "Pawana Hospital", num: "7722049970", desc: "Somatne Phata, Talegaon" },
+            { name: "MIMER (Talegaon General)", num: "02114222462", desc: "Talegaon Station Road" },
+            { name: "Sevadham Hospital", num: "02114222456", desc: "Talegaon Dabhade" },
+            { name: "Atharva Accident Hospital", num: "08048127521", desc: "Paisa Fund Glass Factory" }
+        ];
+
+        const helplines = [
+            { name: "Talegaon Police Station", num: "02114222444", desc: "Local Police Support" },
+            { name: "Fire Brigade", num: "101", desc: "Fire Emergency" },
+            { name: "Women Helpline", num: "1091", desc: "Safety Support" }
+        ];
+
+        function createCards(data, elementId) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = data.map(item => `
+                <div class="card">
+                    <div class="info">
+                        <span class="tag">AVAILABLE 24/7</span>
+                        <h3>${item.name}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                    <button class="dial-btn" onclick="confirmDial('${item.name}', '${item.num}')">📞</button>
+                </div>
+            `).join('');
+        }
+
+        function confirmDial(name, number) {
+            if (confirm(`Do you want to call ${name} at ${number}?`)) {
+                window.location.href = `tel:${number}`;
+            }
+        }
+
+        // Initialize lists
+        createCards(hospitals, 'hospital-list');
+        createCards(helplines, 'helpline-list');
+    </script>
+</body>
+</html>

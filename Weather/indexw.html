@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talegaon Weather</title>
+    <link rel="stylesheet" href="stylew.css">
+    <link rel="icon" type="image/x-icon" href="nutanx.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="weather-container">
+    <div class="weather-card">
+        <div class="header">
+            <h2 class="city">Talegaon Dabhade</h2>
+            <p id="date-display"></p>
+        </div>
+
+        <div class="main-display">
+            <div class="icon-box">
+                <img id="weather-icon" src="" alt="Weather Icon">
+            </div>
+            <h1 id="temp">--°C</h1>
+        </div>
+
+        <p id="description">Loading weather...</p>
+
+        <div class="details-grid">
+            <div class="detail-item">
+                <span class="icon">💧</span>
+                <div class="data">
+                    <p class="label">Humidity</p>
+                    <p class="value"><span id="humidity">--</span>%</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <span class="icon">💨</span>
+                <div class="data">
+                    <p class="label">Wind</p>
+                    <p class="value"><span id="wind">--</span> km/h</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="appw.js"></script>
+<script>
+    // Simple script to show today's date
+    const d = new Date();
+    document.getElementById('date-display').innerHTML = d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+</script>
+</body>
+</html>

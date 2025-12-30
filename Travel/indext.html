@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talegaon - Transit Link</title>
+    <link rel="stylesheet" href="stylet.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/x-icon" href="nutanx.png">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <span id="date-label">Transit Schedule</span>
+                <h1 id="live-clock">00:00:00</h1>
+                <div class="location-chip">
+                    <i data-lucide="bus"></i> Talegaon Dabhade Hub
+                </div>
+            </div>
+        </header>
+
+        <nav class="category-nav">
+            <button class="nav-item active" id="train-tab" onclick="toggleMode('train')">Trains</button>
+            <button class="nav-item" id="bus-tab" onclick="toggleMode('bus')">PMPML</button>
+            <button class="nav-item" id="st-tab" onclick="toggleMode('st')">ST Board</button>
+        </nav>
+
+        <main id="schedule-list" class="schedule-container">
+            </main>
+
+        <footer class="action-footer">
+            <button class="btn-secondary" onclick="window.location.href='https://www.railyatri.in/live-train-status'">
+              <i data-lucide="activity"></i> Find My Train
+            </button>
+
+            <button class="btn-primary" onclick="window.location.href='https://www.google.com/maps'">
+              <i data-lucide="navigation"></i> Open Maps
+            </button>
+        </footer>
+    </div>
+
+    <script src="appt.js"></script>
+</body>
+</html>
