@@ -35,7 +35,7 @@ document.querySelectorAll('.google-btn').forEach(btn => {
             }, { merge: true });
 
             localStorage.setItem('loggedInUserId', user.uid);
-            window.location.href = 'http://127.0.0.1:5500/landing/landing.html';
+            window.location.href = 'https://landing-snowy-nu.vercel.app/';
 
         } catch (error) {
             if (error.code === 'auth/popup-closed-by-user') {
