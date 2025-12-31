@@ -42,7 +42,7 @@ onAuthStateChanged(auth, async (user) => {
         }
     } else {
         // No user is signed in, redirect to login page
-        window.location.href = 'http://127.0.0.1:5500/signin/index.html';
+        window.location.href = 'https://landing-snowy-nu.vercel.app/';
     }
 });
 
@@ -54,7 +54,7 @@ if (logoutButton) {
             // Clear local storage tracking
             localStorage.removeItem('loggedInUserId');
             // Move user back to login screen
-            window.location.href = 'http://127.0.0.1:5500/signin/index.html';
+            window.location.href = 'https://landing-snowy-nu.vercel.app/';
         }).catch((error) => {
             console.error('Logout Error:', error);
             alert("Error logging out. Please try again.");
