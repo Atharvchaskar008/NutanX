@@ -38,7 +38,7 @@ if (logoutButton) {
     logoutButton.addEventListener('click', () => {
         signOut(auth).then(() => {
             localStorage.removeItem('loggedInUserId');
-            window.location.replace("../signin/index.html");
+            window.location.replace("../index.html");
         }).catch((error) => {
             console.error('Logout failed:', error);
         });
