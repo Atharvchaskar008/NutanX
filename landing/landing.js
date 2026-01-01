@@ -11,53 +11,36 @@ const firebaseConfig = {
     appId: "1:310597953102:web:ec9bd2181e1bc35a55c51f"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// 1. AUTH OBSERVER & DATA FETCHING
 onAuthStateChanged(auth, async (user) => {
     if (user) {
-        // User is signed in, fetch their data from Firestore
-        console.log("User logged in:", user.uid);
-        
+        const welcomeHeading = document.getElementById('welcomeUser');
         try {
             const docRef = doc(db, "users", user.uid);
             const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                const userData = docSnap.data();
-                
-                // If you have an element to show the name (e.g., <span id="userName"></span>)
-                // You can uncomment the line below to personalize the UI:
-                // document.getElementById('navbarUserName').innerText = `Welcome, ${userData.firstName}`;
-                
-                console.log("Welcome,", userData.firstName);
-            } else {
-                console.log("No user profile found in Firestore.");
+            if (docSnap.exists() && welcomeHeading) {
+                welcomeHeading.innerText = `Welcome, ${docSnap.data().firstName}!`;
             }
         } catch (error) {
-            console.error("Error fetching user data:", error);
+            console.error("Firebase Error:", error);
         }
     } else {
-        // No user is signed in, redirect to login page
-        window.location.href = 'landing.html';
+        // Redirect to signin folder peer
+        window.location.replace("../signin/index.html");
     }
 });
 
-// 2. LOGOUT LOGIC
 const logoutButton = document.getElementById('logout');
 if (logoutButton) {
     logoutButton.addEventListener('click', () => {
         signOut(auth).then(() => {
-            // Clear local storage tracking
             localStorage.removeItem('loggedInUserId');
-            // Move user back to login screen
-            window.location.href = '';
+            window.location.replace("../signin/index.html");
         }).catch((error) => {
-            console.error('Logout Error:', error);
-            alert("Error logging out. Please try again.");
+            console.error('Logout failed:', error);
         });
     });
 }

@@ -16,34 +16,27 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-// IMPORTANT: Matches the .google-btn class in HTML
 document.querySelectorAll('.google-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
         try {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
-
             const nameParts = user.displayName ? user.displayName.split(" ") : ["User"];
-            const firstName = nameParts[0];
-            const lastName = nameParts.slice(1).join(" ") || "";
 
             await setDoc(doc(db, "users", user.uid), {
-                firstName: firstName,
-                lastName: lastName,
+                firstName: nameParts[0],
+                lastName: nameParts.slice(1).join(" ") || "",
                 email: user.email,
-                lastLogin: new Date().toLocaleString()
+                lastLogin: new Date().toISOString()
             }, { merge: true });
 
             localStorage.setItem('loggedInUserId', user.uid);
-            window.location.href = 'https://landing-snowy-nu.vercel.app/';
+            
+            // Redirect out of signin and into landing
+            window.location.href = "../landing/landing.html";
 
         } catch (error) {
-            if (error.code === 'auth/popup-closed-by-user') {
-                console.log("Popup closed by user - no action taken.");
-            } else {
-                console.error("Auth Error:", error);
-                alert("Login failed: " + error.message);
-            }
+            console.error("Auth Error:", error);
         }
     });
 });
