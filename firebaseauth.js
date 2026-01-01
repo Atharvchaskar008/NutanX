@@ -33,7 +33,7 @@ document.querySelectorAll('.google-btn').forEach(btn => {
             localStorage.setItem('loggedInUserId', user.uid);
             
             // Redirect out of signin and into landing
-            window.location.href = "../landing/landing.html";
+            window.location.href = "./landing/landing.html";
 
         } catch (error) {
             console.error("Auth Error:", error);
