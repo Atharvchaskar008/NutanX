@@ -1,0 +1,1 @@
+<img width="1905" height="922" alt="1" src="https://github.com/user-attachments/assets/a1baa9af-41cb-4cc4-8f0d-694269e235c0" />The NUTANX is a one stop platform for students where they can ease there campus living
