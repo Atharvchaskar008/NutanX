@@ -264,7 +264,6 @@ body {
     z-index: 1060; /* Higher than nav to stay on top */
     display: flex;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .ticker-content {
