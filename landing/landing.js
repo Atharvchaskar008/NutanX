@@ -44,3 +44,19 @@ if (logoutButton) {
         });
     });
 }
+// Logic to close the News Ticker
+const newsTicker = document.getElementById('newsTicker');
+const closeTickerBtn = document.getElementById('closeTicker');
+
+if (closeTickerBtn && newsTicker) {
+    closeTickerBtn.addEventListener('click', () => {
+        newsTicker.style.display = 'none';
+        // Optional: Save preference so it stays closed during this session
+        sessionStorage.setItem('tickerClosed', 'true');
+    });
+}
+
+// Check if user previously closed it in this session
+if (sessionStorage.getItem('tickerClosed') === 'true' && newsTicker) {
+    newsTicker.style.display = 'none';
+}
