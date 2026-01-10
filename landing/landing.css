@@ -245,60 +245,79 @@ body {
 
 
 
-
-
-/* --- Updated News Ticker Styles --- */
+/* --- Premium News Ticker Styles --- */
 .news-ticker {
-    background: var(--black);
+    /* Glassmorphism effect to match your nav */
+    background: rgba(23, 23, 16, 0.9); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
     color: #ffffff;
     overflow: hidden;
     white-space: nowrap;
-    padding: 10px 0;
-    font-size: 0.85rem;
-    font-weight: 500;
-    border-bottom: 2px solid var(--gunmetal);
+    padding: 12px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
-    z-index: 1050;
+    z-index: 1060; /* Higher than nav to stay on top */
     display: flex;
     align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .ticker-content {
     display: inline-block;
     padding-left: 100%;
-    animation: scroll-left 30s linear infinite;
+    animation: scroll-left 25s linear infinite; /* Slightly faster for better UX */
 }
 
 .ticker-item {
     display: inline-block;
-    padding-right: 50px;
+    padding-right: 60px;
+    position: relative;
 }
 
+/* Add a small separator dot between items */
+.ticker-item:not(:last-child)::after {
+    content: "•";
+    position: absolute;
+    right: 25px;
+    color: var(--misty);
+    opacity: 0.5;
+}
+
+/* Accent color for deadlines to grab attention */
+.ticker-item:nth-child(even) {
+    color: #ffd166; /* Soft gold/yellow for urgency */
+}
+
+/* Improved Close Button */
 .ticker-close {
     position: absolute;
-    right: 10px;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--gunmetal);
+    background: rgba(255, 255, 255, 0.1);
     color: white;
-    border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    line-height: 20px;
-    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px; /* Squared-circle look to match buttons */
+    width: 28px;
+    height: 28px;
     cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    z-index: 1051;
-    transition: background 0.3s ease;
+    font-size: 20px;
+    transition: all 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1061;
 }
 
 .ticker-close:hover {
-    background: #dc3545; /* Red on hover to match logout style */
+    background: #dc3545;
+    border-color: #dc3545;
+    box-shadow: 0 0 10px rgba(220, 53, 69, 0.4);
 }
 
 @keyframes scroll-left {
@@ -306,6 +325,23 @@ body {
     100% { transform: translateX(-50%); }
 }
 
-.news-ticker:hover .ticker-content {
-    animation-play-state: paused;
+/* Smooth fade out at the edges so text doesn't just "cut off" */
+.news-ticker::before,
+.news-ticker::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 2;
+}
+
+.news-ticker::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(23, 23, 16, 1), transparent);
+}
+
+.news-ticker::after {
+    right: 40px; /* Offset for the close button */
+    background: linear-gradient(to left, rgba(23, 23, 16, 1), transparent);
 }
