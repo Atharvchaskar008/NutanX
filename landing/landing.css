@@ -248,9 +248,9 @@ body {
 /* --- Premium News Ticker Styles --- */
 .news-ticker {
     /* Glassmorphism effect to match your nav */
-    background: rgba(23, 23, 16, 0.9); 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     
     color: #ffffff;
     overflow: hidden;
